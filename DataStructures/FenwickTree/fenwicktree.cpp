@@ -33,14 +33,18 @@ struct fenwick {
 
 
 int main(){
+    cout << "n (array size): ";
     int n; cin >> n;
     vector<int> v(n);
+    cout << "n values for the array: ";
     for(int i = 0; i < n; i++){
         cin >> v[i];
     }
     fenwick ft(v);
+    cout << "q (number of queries): ";
     int q; cin >> q;
     while(q--){
+        cout << "l,r to query sum: ";
         int l,r; cin >> l >> r;
         cout << ft.sum(l,r) << endl;
 
