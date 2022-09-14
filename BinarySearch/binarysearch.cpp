@@ -21,7 +21,7 @@ int binary_search(int v, vector<int>& V){
 int main(){
     int n,v; cin >> n;
     vector<int> V(n);
-    for(int i = 0; i < n; i++) scanf("%d", V[i]);
+    for(auto& a : v) cin >> a;
     cin >> v;
     cout << binary_search(v, V) << endl;
 }
