@@ -2,9 +2,11 @@
 
 using namespace std;
 
-struct fenwick {
+class fenwick {
+private:
     vector<int> bit;
     int n;
+public:
     fenwick (int inp){
         n = inp;
         bit.assign(n, 0);
@@ -29,6 +31,12 @@ struct fenwick {
             i = (i | (i + 1));
         }
     }
+    void printbit(){
+        for(auto a : bit){
+            cout << a << ' ';
+        }
+        cout << endl;
+    }
 };
 
 
@@ -44,9 +52,17 @@ int main(){
     cout << "q (number of queries): ";
     int q; cin >> q;
     while(q--){
-        cout << "l,r to query sum: ";
+        cout << "l,r to query sum (-1 to update): ";
         int l,r; cin >> l >> r;
-        cout << ft.sum(l,r) << endl;
+        if(l == -1 || r == -1){
+            cout << "index to update and value: ";
+            ft.printbit();
+            int a,b; cin >> a >> b;
+            ft.add(a,b);
+            ft.printbit();
+        } else {
+            cout << ft.sum(l,r) << endl;
+        }
 
     }
     return 0;
