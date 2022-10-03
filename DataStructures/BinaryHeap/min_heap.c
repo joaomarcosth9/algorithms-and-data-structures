@@ -14,12 +14,6 @@ void swap(int* x, int* y){
     *(x) ^= *(y); *(y) ^= *(x); *(x) ^= *(y);
 }
 
-int power(int a, int b){
-    int res = 1;
-    while(b--) res *= a;
-    return res;
-}
-
 void print_tree(int *p, int n){
     int it = 1, idx = 0;
     n--;
