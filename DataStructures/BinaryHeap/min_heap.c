@@ -30,8 +30,8 @@ void print_tree(int *p, int n){
 int main(){
     int n = 32;
     int size = 0;
-    int *tree = malloc(4*n*(sizeof(int)));
-    for(int i = 0; i < 4*n; i++){
+    int *tree = malloc(2*n*(sizeof(int)));
+    for(int i = 0; i < 2*n; i++){
         tree[i] = INT_MAX;
     }
     int min;
@@ -76,6 +76,11 @@ int main(){
             min = tree[0];
         } else if ( op == 2 ){
             // get min
+            if(size == 0){
+                printf("Empty tree!\n");
+                printf("\n");
+                continue;
+            }
             printf("Min: %d\n", min);
             printf("\n");
         } else if ( op == 3 ){
