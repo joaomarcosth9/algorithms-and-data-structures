@@ -6,6 +6,7 @@
 // Get-min O(1)
 // Extract-min O(log n)
 
+const int neutral = INT_MAX;
 int left_child (int n) { return 2*n+1; }
 int right_child (int n) { return 2*n+2; }
 int parent (int n) { return ((n-1)/2); }
@@ -19,7 +20,7 @@ void print_tree(int *p, int n){
     n--;
     while(n){
         for(int i = 0; i < it && n; i++, idx++, n--){
-            printf("%d ", (p[idx] != INT_MAX ? p[idx] : 0));
+            printf("%d ", (p[idx] != neutral ? p[idx] : 0));
         }
         it*=2;
         printf("\n");
@@ -30,9 +31,9 @@ void print_tree(int *p, int n){
 int main(){
     int n = 32;
     int size = 0;
-    int *tree = malloc(2*n*(sizeof(int)));
-    for(int i = 0; i < 2*n; i++){
-        tree[i] = INT_MAX;
+    int *tree = malloc(4*n*(sizeof(int)));
+    for(int i = 0; i < 4*n; i++){
+        tree[i] = neutral;
     }
     int min;
     int next = 0;
@@ -41,7 +42,8 @@ int main(){
         printf("(1) Insert\n");
         printf("(2) Get-Min\n");
         printf("(3) Extract-Min\n");
-        printf("(4) Exit\n");
+        printf("(4) Print tree\n");
+        printf("(5) Exit\n");
         printf("Op: ");
         scanf("%d", &op);
         printf("\n");
@@ -90,10 +92,10 @@ int main(){
                 printf("\n");
                 continue;
             }
-            int nop = 0, pos = next-1;
-            swap(&tree[0], &tree[pos]);
-            tree[pos] = INT_MAX;
             next--;
+            int nop = 0, pos = next;
+            swap(&tree[0], &tree[pos]);
+            tree[pos] = neutral;
             size--;
             nop++;
             printf("-----------------\n");
@@ -117,6 +119,10 @@ int main(){
             printf("\n");
             min = tree[0];
         } else if ( op == 4 ){
+            printf("-----------------\n");
+            print_tree(tree, n);
+            printf("-----------------\n");
+        } else if ( op == 5 ){
             break;
         }
     }
