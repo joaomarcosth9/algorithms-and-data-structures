@@ -3,25 +3,26 @@
 
 using namespace std;
 
-int binary_search(int v, vector<int>& V){
+int binary_search(int v, vector<int> &V) {
     int n = V.size();
-    int l = 0, r = n-1;
-    while(l <= r){
-        int mid = l + (r-l)/2;
-        if(V[mid] == v) return mid;
-        if(V[mid] > v){
-            r = mid-1;
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+        if (V[mid] == v) return mid;
+        if (V[mid] > v) {
+            r = mid - 1;
         } else {
-            l = mid+1;
+            l = mid + 1;
         }
     }
     return -1;
 }
 
-int main(){
-    int n,v; cin >> n;
+int main() {
+    int n, v;
+    cin >> n;
     vector<int> V(n);
-    for(auto& a : v) cin >> a;
+    for (auto &a : v) cin >> a;
     cin >> v;
     cout << binary_search(v, V) << endl;
 }
